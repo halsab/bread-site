@@ -1,53 +1,19 @@
 import { MediaFrame } from "@/components/media-frame";
 
-function getContactUrl(
-  value: string | undefined,
-  hostname: string,
-  pathname: RegExp,
-): string | undefined {
-  if (!value) return undefined;
-
-  try {
-    const url = new URL(value);
-    if (
-      url.protocol !== "https:" ||
-      url.hostname !== hostname ||
-      url.username ||
-      url.password ||
-      !pathname.test(url.pathname) ||
-      url.search ||
-      url.hash
-    ) {
-      return undefined;
-    }
-    return value;
-  } catch {
-    return undefined;
-  }
-}
+const TELEGRAM_URL = "https://t.me/alisa_sabr";
+const MAX_URL =
+  "https://max.ru/u/f9LHodD0cOIDSkO42jaZH-QksI9MMg-0iqhx4QJPqQkv3KChCeO60u-ov9M";
 
 const contacts = [
   {
     label: "Telegram",
-    href: getContactUrl(
-      process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "https://t.me/alisa_sabr",
-      "t.me",
-      /^\/[A-Za-z0-9_]{5,32}\/?$/,
-    ),
+    href: TELEGRAM_URL,
   },
   {
     label: "MAX",
-    href: getContactUrl(
-      process.env.NEXT_PUBLIC_MAX_URL ??
-        "https://max.ru/u/f9LHodD0cOIDSkO42jaZH-QksI9MMg-0iqhx4QJPqQkv3KChCeO60u-ov9M",
-      "max.ru",
-      /^\/u\/[A-Za-z0-9_-]+\/?$/,
-    ),
+    href: MAX_URL,
   },
 ];
-const configuredContacts = contacts.filter(
-  (contact): contact is typeof contact & { href: string } => Boolean(contact.href),
-);
 type Product = {
   name: string;
   description?: string;
@@ -196,7 +162,7 @@ export default function Home() {
                   className="product__media"
                   motion="gentle"
                   ratio="portrait"
-                  sizes="(max-width: 640px) 90vw, (max-width: 980px) 44vw, 30vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1279px) 44vw, 16rem"
                   src={product.src}
                 />
                 <h3>{product.name}</h3>
@@ -283,25 +249,19 @@ export default function Home() {
               <h3 className="contact-heading" id="contacts" tabIndex={-1}>
                 Написать сообщение
               </h3>
-              {configuredContacts.length > 0 ? (
-                <nav aria-label="Связаться с пекарем" className="contact-links">
-                  {configuredContacts.map((contact) => (
-                    <a
-                      href={contact.href}
-                      key={contact.label}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <span className="contact-link__name">{contact.label}</span>
-                      <span className="sr-only"> — откроется в новой вкладке</span>
-                    </a>
-                  ))}
-                </nav>
-              ) : (
-                <p className="contact-note">
-                  Ссылки на личные профили появятся после подтверждения адресов.
-                </p>
-              )}
+              <nav aria-label="Связаться с пекарем" className="contact-links">
+                {contacts.map((contact) => (
+                  <a
+                    href={contact.href}
+                    key={contact.label}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="contact-link__name">{contact.label}</span>
+                    <span className="sr-only"> — откроется в новой вкладке</span>
+                  </a>
+                ))}
+              </nav>
             </div>
           </div>
         </section>
