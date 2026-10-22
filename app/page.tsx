@@ -76,8 +76,8 @@ export default function Home() {
 
       <header className="site-header">
         <div className="site-header__inner site-shell">
-          <a aria-label="Bread — в начало страницы" className="wordmark" href="#top">
-            Bread
+          <a aria-label="MoolYort Bakery — в начало страницы" className="wordmark" href="#top">
+            MoolYort Bakery
           </a>
           <nav aria-label="Основная навигация" className="site-nav">
             <a href="#bread">Наш хлеб</a>
@@ -198,7 +198,7 @@ export default function Home() {
               буханки. Мне нравится этот процесс — от первых движений с тестом
               до момента, когда хлеб остывает после выпечки. Пока в моей
               небольшой коллекции всего несколько видов, но у каждого свой
-              характер. Bread — место, где я могу показать свой хлеб и
+              характер. MoolYort Bakery — место, где я могу показать свой хлеб и
               поделиться тем, что в нём люблю.
             </p>
           </div>
@@ -280,7 +280,7 @@ export default function Home() {
         <div className="site-footer__inner site-shell">
           <div className="site-footer__brand">
             <a className="wordmark" href="#top">
-              Bread
+              MoolYort Bakery
             </a>
             <p>Домашний хлеб ручной работы.</p>
           </div>

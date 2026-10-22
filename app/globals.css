@@ -763,7 +763,7 @@ a:focus-visible {
   }
 
   .wordmark {
-    font-size: 2.2rem;
+    font-size: clamp(1.35rem, 4.3vw, 1.55rem);
   }
 
   .site-nav {
@@ -847,6 +847,26 @@ a:focus-visible {
   .site-footer__nav {
     justify-content: flex-start;
     gap: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .site-header__inner {
+    min-height: 0;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding-block: 1rem;
+  }
+
+  .site-header .wordmark {
+    font-size: 1.75rem;
+  }
+
+  .site-header .site-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
   }
 }
 
