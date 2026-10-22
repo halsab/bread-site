@@ -466,11 +466,23 @@ a:focus-visible {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(1.5rem, 3.5vw, 3.5rem);
   max-width: 72rem;
   margin-inline: auto;
   align-items: start;
+}
+
+@media (min-width: 1280px) {
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .product__media {
@@ -562,6 +574,38 @@ a:focus-visible {
   color: var(--flax);
   font-size: 1rem;
   line-height: 1.7;
+}
+
+.contact-heading {
+  margin: 2.5rem 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.contact-links a {
+  min-height: 2.75rem;
+  padding: 0.75rem 0.25rem;
+  color: var(--milk);
+  font-size: 0.9rem;
+  text-underline-offset: 0.3rem;
+}
+
+.contact-links a:hover {
+  color: var(--flax);
+}
+
+.contact-note {
+  margin-top: 0.5rem !important;
+  color: var(--flax);
+  font-size: 0.85rem !important;
 }
 
 .site-footer {
@@ -783,6 +827,14 @@ a:focus-visible {
 
   .closing__copy > p {
     font-size: 0.94rem;
+  }
+
+  .contact-heading {
+    margin-top: 2rem;
+  }
+
+  .contact-links {
+    gap: 1rem;
   }
 
   .site-footer__inner {

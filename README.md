@@ -143,7 +143,7 @@ The landing follows the approved [visual direction](https://docs.google.com/docu
 | Hero loaf / crumb detail | Vertical / horizontal |
 | Philosophy ingredients | Vertical |
 | Full-width crumb transition | Full-bleed depth |
-| Three product portraits | Gentle vertical, with aligned frames and descriptions |
+| Four product portraits | Gentle vertical; descriptions and preliminary ingredients stay with the three existing cards |
 | Baker portrait / hands / proofing dough | Vertical / horizontal / still |
 | Full-width freshly baked loaf | Full-bleed depth |
 
@@ -152,3 +152,7 @@ The internal layer has 8% overscan for vertical/horizontal motion, 3% for gentle
 At widths up to 760px, portrait movement uses the gentle profile, horizontal details become still, and full-bleed scenes use the vertical profile with a mobile-specific height and crop. Reduced-motion preferences and browsers without CSS view-timeline support show static photographs with all content visible.
 
 Landscape source files are 1536×1024 and portrait files are 1122×1402. The full-width scenes use existing landscape assets; large or high-density displays are limited by that source detail. Use higher-resolution approved originals when available, rather than enlarging the files artificially.
+
+The fourth product is named `Ржаной хлеб на закваске`. Its card intentionally omits description and ingredient details until those facts are verified. `public/images/rye-sourdough.webp` is provisional generated editorial imagery, not authenticated bakery photography. Existing requirements for authentic photography and verified ingredients and allergens still apply.
+
+The header and footer link to the closing contact area. Configure `NEXT_PUBLIC_TELEGRAM_URL` and `NEXT_PUBLIC_MAX_URL` with the baker's verified personal profile URLs; the page renders both external links only when both values are valid HTTPS URLs and opens them in separate tabs with safe navigation attributes. No destination is configured yet, so the page shows a short note instead of nonfunctional links. These personal channels do not form an ordering system: the site has no cart, checkout, payment flow, or order database.

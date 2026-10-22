@@ -1,6 +1,39 @@
 import { MediaFrame } from "@/components/media-frame";
 
-const products = [
+function getHttpsContactUrl(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && !url.username && !url.password
+      ? url.href
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+const contacts = [
+  {
+    label: "Telegram",
+    href: getHttpsContactUrl(process.env.NEXT_PUBLIC_TELEGRAM_URL),
+  },
+  { label: "MAX", href: getHttpsContactUrl(process.env.NEXT_PUBLIC_MAX_URL) },
+];
+const configuredContacts = contacts.filter(
+  (contact): contact is typeof contact & { href: string } => Boolean(contact.href),
+);
+const hasAllContactUrls = configuredContacts.length === contacts.length;
+
+type Product = {
+  name: string;
+  description?: string;
+  ingredients?: string;
+  alt: string;
+  src: string;
+};
+
+const products: Product[] = [
   {
     name: "Тартин классический",
     description:
@@ -27,6 +60,11 @@ const products = [
     alt: "Формовая тыквенная буханка с тыквенными семечками.",
     src: "/images/pumpkin-loaf.webp",
   },
+  {
+    name: "Ржаной хлеб на закваске",
+    alt: "Разрезанная буханка ржаного хлеба и ломтики на деревянной доске.",
+    src: "/images/rye-sourdough.webp",
+  },
 ];
 
 export default function Home() {
@@ -44,6 +82,7 @@ export default function Home() {
           <nav aria-label="Основная навигация" className="site-nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
+            <a href="#contacts">Контакты</a>
           </nav>
         </div>
       </header>
@@ -120,7 +159,7 @@ export default function Home() {
             <h2 className="section-title" id="bread-title">
               Что я пеку
             </h2>
-            <p>Три варианта хлеба с одной простой основой — и разным характером.</p>
+            <p>Четыре вида хлеба, объединённые вниманием к процессу.</p>
           </div>
 
           <div className="product-grid">
@@ -135,10 +174,14 @@ export default function Home() {
                   src={product.src}
                 />
                 <h3>{product.name}</h3>
-                <p className="product__description">{product.description}</p>
-                <p className="product__ingredients">
-                  <span>Предварительный состав:</span> {product.ingredients}
-                </p>
+                {product.description ? (
+                  <p className="product__description">{product.description}</p>
+                ) : null}
+                {product.ingredients ? (
+                  <p className="product__ingredients">
+                    <span>Предварительный состав:</span> {product.ingredients}
+                  </p>
+                ) : null}
               </article>
             ))}
           </div>
@@ -191,7 +234,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="closing-title" className="closing" id="closing">
+        <section aria-labelledby="closing-title" className="closing" id="contacts">
           <MediaFrame
             alt="Свежевыпеченный тартин остывает на решётке."
             className="photo-transition"
@@ -209,6 +252,25 @@ export default function Home() {
                 Иногда для хорошего момента достаточно свежего хлеба и людей,
                 с которыми хочется его разделить.
               </p>
+              <h3 className="contact-heading">Контакты</h3>
+              {hasAllContactUrls ? (
+                <nav aria-label="Связаться с пекарем" className="contact-links">
+                  {configuredContacts.map((contact) => (
+                    <a
+                      href={contact.href}
+                      key={contact.label}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {contact.label}
+                    </a>
+                  ))}
+                </nav>
+              ) : (
+                <p className="contact-note">
+                  Ссылки на личные профили появятся после подтверждения адресов.
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -225,6 +287,7 @@ export default function Home() {
           <nav aria-label="Навигация в подвале" className="site-nav site-footer__nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
+            <a href="#contacts">Контакты</a>
           </nav>
         </div>
       </footer>
