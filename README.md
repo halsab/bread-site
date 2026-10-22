@@ -131,3 +131,24 @@ The portable build runs Vinext directly without a host `timeout` command. The ma
 
 - [vinext Documentation](https://github.com/cloudflare/vinext)
 - [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+
+## Landing photography and motion
+
+The landing follows the approved [visual direction](https://docs.google.com/document/d/17Pq11gb7BLebd3kNMHPCJfif_644eaUDAWBm7pLx2-s/edit) and [Russian copy](https://docs.google.com/document/d/1iU2h8yTxCfAdf0rSqTEzJkKxrV05ZV5uBpDjZCp1FzQ/edit).
+
+`MediaFrame` keeps the frame in document flow, clips its surface, and moves only the oversized inner image layer. `app/globals.css` owns four native CSS view-timeline profiles. Progress is linear from the frame entering the viewport to leaving it, so reversing scroll restores the same crop without timers, scroll listeners, or client hydration.
+
+| Scene | Profile |
+| --- | --- |
+| Hero loaf / crumb detail | Vertical / horizontal |
+| Philosophy ingredients | Vertical |
+| Full-width crumb transition | Full-bleed depth |
+| Three product portraits | Gentle vertical, with aligned frames and descriptions |
+| Baker portrait / hands / proofing dough | Vertical / horizontal / still |
+| Full-width freshly baked loaf | Full-bleed depth |
+
+The internal layer has 8% overscan for vertical/horizontal motion, 3% for gentle motion, and 14% for full-bleed depth. Maximum translations remain inside those margins; percentages refer to the enlarged layer. Do not add transforms to frames or image hover effects that compete with this system.
+
+At widths up to 760px, portrait movement uses the gentle profile, horizontal details become still, and full-bleed scenes use the vertical profile with a mobile-specific height and crop. Reduced-motion preferences and browsers without CSS view-timeline support show static photographs with all content visible.
+
+Landscape source files are 1536×1024 and portrait files are 1122×1402. The full-width scenes use existing landscape assets; large or high-density displays are limited by that source detail. Use higher-resolution approved originals when available, rather than enlarging the files artificially.

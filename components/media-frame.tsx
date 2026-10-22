@@ -1,10 +1,9 @@
 import Image from "next/image";
-import type { PhotoMotion } from "@/components/landing-motion";
 
 type MediaFrameProps = {
   alt: string;
   className?: string;
-  motion?: PhotoMotion;
+  motion?: "vertical" | "horizontal" | "gentle" | "full-bleed";
   preload?: boolean;
   ratio: "landscape" | "portrait" | "square";
   sizes: string;
