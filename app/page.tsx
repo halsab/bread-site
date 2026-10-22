@@ -146,8 +146,8 @@ export default function Home() {
           src="/images/bread-crumb-detail.webp"
         />
 
-        <section aria-labelledby="bread-title" className="products section-shell" id="bread">
-          <div className="products__intro">
+        <section aria-labelledby="bread-title" className="products section-shell">
+          <div className="products__intro" id="bread">
             <h2 className="section-title" id="bread-title">
               Что я пеку
             </h2>
@@ -179,8 +179,8 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="about-title" className="story section-shell" id="about">
-          <div className="story__copy">
+        <section aria-labelledby="about-title" className="story section-shell">
+          <div className="story__copy" id="about">
             <h2 className="section-title" id="about-title">
               Немного обо мне и моём хлебе
             </h2>
