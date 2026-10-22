@@ -2,9 +2,8 @@ import Image from "next/image";
 
 type MediaFrameProps = {
   alt: string;
-  caption: string;
   className?: string;
-  priority?: boolean;
+  preload?: boolean;
   ratio: "landscape" | "portrait" | "square";
   sizes: string;
   src?: string;
@@ -12,9 +11,8 @@ type MediaFrameProps = {
 
 export function MediaFrame({
   alt,
-  caption,
   className,
-  priority = false,
+  preload = false,
   ratio,
   sizes,
   src,
@@ -27,17 +25,12 @@ export function MediaFrame({
             alt={alt}
             className="media-frame__image"
             fill
-            loading={priority ? "eager" : "lazy"}
+            preload={preload}
             sizes={sizes}
             src={src}
           />
-        ) : (
-          <span aria-hidden="true" className="media-frame__placeholder">
-            Фото появится здесь
-          </span>
-        )}
+        ) : null}
       </div>
-      <figcaption className="media-frame__caption">{caption}</figcaption>
     </figure>
   );
 }

@@ -1,6 +1,6 @@
 # Photography inventory
 
-Place the approved photographs in this directory using these filenames and aspect ratios. The landing page already reserves stable, responsive frames for all ten scenes. Replace each media placeholder by passing its local `/images/...` path to `MediaFrame` after the final photograph is approved.
+Place approved photographs in `public/images/` using these filenames and aspect ratios. Each row maps to a `MediaFrame` in `app/page.tsx`; set its `src` to the matching local `/images/...` path after the photograph is approved. Review the corresponding alternative text against the final image before publishing.
 
 | File | Scene | Aspect ratio |
 | --- | --- | --- |
@@ -15,4 +15,4 @@ Place the approved photographs in this directory using these filenames and aspec
 | `freshly-baked-loaf.webp` | Freshly baked loaf | 3:2 |
 | `baker-silhouette.webp` | Real baker portrait, or an anonymous hands/silhouette frame | 4:5 |
 
-Use responsive, appropriately compressed WebP images. Review each alternative text against the actual final photograph before publishing. The pumpkin bread photograph must show a traditional loaf shape.
+Use responsive, appropriately compressed WebP images. The pumpkin bread photograph must show a traditional loaf shape.

@@ -8,6 +8,39 @@
   --crust: #a96f47;
   --cocoa: #34251e;
   --olive: #777961;
+  --background: var(--milk);
+  --foreground: var(--cocoa);
+  --card: var(--milk);
+  --card-foreground: var(--cocoa);
+  --popover: var(--milk);
+  --popover-foreground: var(--cocoa);
+  --primary: var(--cocoa);
+  --primary-foreground: var(--milk);
+  --secondary: var(--flax);
+  --secondary-foreground: var(--cocoa);
+  --muted: #ece5d9;
+  --muted-foreground: #6b584b;
+  --accent: var(--flax);
+  --accent-foreground: var(--cocoa);
+  --destructive: #b42318;
+  --destructive-foreground: #fffaf3;
+  --border: var(--olive);
+  --input: var(--olive);
+  --ring: var(--crust);
+  --chart-1: var(--crust);
+  --chart-2: var(--olive);
+  --chart-3: var(--cocoa);
+  --chart-4: #c39169;
+  --chart-5: #a8a98e;
+  --radius: 0.625rem;
+  --sidebar: var(--milk);
+  --sidebar-foreground: var(--cocoa);
+  --sidebar-primary: var(--cocoa);
+  --sidebar-primary-foreground: var(--milk);
+  --sidebar-accent: var(--flax);
+  --sidebar-accent-foreground: var(--cocoa);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--crust);
   --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
     Georgia, serif;
   --font-body: "Avenir Next", "Segoe UI", Arial, sans-serif;
@@ -15,12 +48,83 @@
 }
 
 @theme inline {
-  --color-background: var(--milk);
-  --color-foreground: var(--cocoa);
-  --color-primary: var(--cocoa);
-  --color-primary-foreground: var(--milk);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #251c17;
+    --foreground: var(--milk);
+    --card: #30241e;
+    --card-foreground: var(--milk);
+    --popover: #30241e;
+    --popover-foreground: var(--milk);
+    --primary: var(--milk);
+    --primary-foreground: var(--cocoa);
+    --secondary: #4b392d;
+    --secondary-foreground: var(--milk);
+    --muted: #40332b;
+    --muted-foreground: #d1c0aa;
+    --accent: #4a4938;
+    --accent-foreground: var(--milk);
+    --destructive: #f87171;
+    --destructive-foreground: #251c17;
+    --border: #a8a98e;
+    --input: #a8a98e;
+    --ring: #c39169;
+    --chart-1: #c39169;
+    --chart-2: #a8a98e;
+    --chart-3: var(--milk);
+    --chart-4: var(--crust);
+    --chart-5: var(--olive);
+    --sidebar: #30241e;
+    --sidebar-foreground: var(--milk);
+    --sidebar-primary: var(--milk);
+    --sidebar-primary-foreground: var(--cocoa);
+    --sidebar-accent: #4a4938;
+    --sidebar-accent-foreground: var(--milk);
+    --sidebar-border: var(--border);
+    --sidebar-ring: #c39169;
+  }
 }
 
 * {
@@ -232,18 +336,6 @@ a:focus-visible {
   aspect-ratio: 1;
 }
 
-.media-frame__placeholder {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: var(--cocoa);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .media-frame__image {
   object-fit: cover;
   transition: transform 700ms cubic-bezier(0.2, 0.7, 0.25, 1);
@@ -251,14 +343,6 @@ a:focus-visible {
 
 .media-frame:hover .media-frame__image {
   transform: scale(1.025);
-}
-
-.media-frame__caption {
-  margin-top: 0.65rem;
-  color: var(--cocoa);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  line-height: 1.4;
 }
 
 .philosophy {
@@ -430,10 +514,6 @@ a:focus-visible {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 1.7vw, 1.45rem);
   line-height: 1.55;
-}
-
-.closing .media-frame__caption {
-  color: var(--flax);
 }
 
 .site-footer {
@@ -712,16 +792,6 @@ a:focus-visible {
 
   .story__details {
     gap: 0.75rem;
-  }
-
-  .media-frame__caption {
-    font-size: 0.75rem;
-  }
-
-  .media-frame__placeholder {
-    padding: 0.5rem;
-    font-size: 0.58rem;
-    letter-spacing: 0.06em;
   }
 
   .closing .section-title {

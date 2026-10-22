@@ -7,7 +7,6 @@ const products = [
       "Пшеничный хлеб на закваске с румяной корочкой и мягким, упругим мякишем. Хорош с маслом, сыром или просто так.",
     ingredients: "пшеничная мука, вода, пшеничная закваска, соль.",
     alt: "Классический тартин.",
-    caption: "Классический тартин · 4:5",
   },
   {
     name: "Тартин с семенами льна",
@@ -16,7 +15,6 @@ const products = [
     ingredients:
       "пшеничная мука, вода, пшеничная закваска, соль, семена льна.",
     alt: "Тартин с семенами льна.",
-    caption: "Тартин с семенами льна · 4:5",
   },
   {
     name: "Тыквенный хлеб",
@@ -25,7 +23,6 @@ const products = [
     ingredients:
       "пшеничная мука, вода, пшеничная закваска, соль, тыквенное пюре, тыквенные семечки.",
     alt: "Формовая тыквенная буханка с тыквенными семечками.",
-    caption: "Тыквенный хлеб · формовая буханка · 4:5",
   },
 ];
 
@@ -44,7 +41,6 @@ export default function Home() {
           <nav aria-label="Основная навигация" className="site-nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
-            <a href="#contact">Контакты</a>
           </nav>
         </div>
       </header>
@@ -68,9 +64,8 @@ export default function Home() {
 
           <MediaFrame
             alt="Целый тартин на льняной ткани и деревянном столе."
-            caption="Целый тартин · главное фото · 3:2"
             className="hero__media"
-            priority
+            preload
             ratio="landscape"
             sizes="(max-width: 760px) 100vw, 48vw"
           />
@@ -96,7 +91,6 @@ export default function Home() {
 
           <MediaFrame
             alt="Хлеб и простые ингредиенты в мягком естественном свете."
-            caption="Хлеб и простые ингредиенты · 4:5"
             className="philosophy__main-media reveal"
             ratio="portrait"
             sizes="(max-width: 760px) 100vw, 42vw"
@@ -104,7 +98,6 @@ export default function Home() {
 
           <MediaFrame
             alt="Разрез хлеба с выразительной фактурой мякиша."
-            caption="Разрез хлеба · фактура мякиша · 3:2"
             className="philosophy__detail-media reveal"
             ratio="landscape"
             sizes="(max-width: 760px) 100vw, 30vw"
@@ -124,7 +117,6 @@ export default function Home() {
               <article className="product reveal" key={product.name}>
                 <MediaFrame
                   alt={product.alt}
-                  caption={product.caption}
                   className="product__media"
                   ratio="portrait"
                   sizes="(max-width: 620px) 100vw, (max-width: 980px) 46vw, 30vw"
@@ -161,8 +153,7 @@ export default function Home() {
             role="group"
           >
             <MediaFrame
-              alt="Пекарь в нейтральном кадре рук или силуэта."
-              caption="Пекарь · реальное фото или силуэт · 4:5"
+              alt="Портрет пекаря."
               className="story__portrait reveal"
               ratio="portrait"
               sizes="(max-width: 760px) 100vw, 29vw"
@@ -170,14 +161,12 @@ export default function Home() {
             <div className="story__details">
               <MediaFrame
                 alt="Руки пекаря в работе с тестом."
-                caption="Руки в работе · 4:5"
                 className="reveal"
                 ratio="portrait"
                 sizes="(max-width: 760px) 46vw, 16vw"
               />
               <MediaFrame
                 alt="Заготовки теста до выпечки в корзинках или формах."
-                caption="Тесто до выпечки · 4:5"
                 className="reveal"
                 ratio="portrait"
                 sizes="(max-width: 760px) 46vw, 16vw"
@@ -186,10 +175,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="contact-title" className="closing" id="contact">
+        <section aria-labelledby="closing-title" className="closing" id="closing">
           <div className="closing__inner section-shell">
             <div className="closing__copy reveal">
-              <h2 className="section-title" id="contact-title">
+              <h2 className="section-title" id="closing-title">
                 До встречи за хлебом.
               </h2>
               <p>
@@ -199,7 +188,6 @@ export default function Home() {
             </div>
             <MediaFrame
               alt="Готовая буханка хлеба после выпечки."
-              caption="Хлеб после выпечки · 3:2"
               className="closing__media reveal"
               ratio="landscape"
               sizes="(max-width: 760px) 100vw, 46vw"
@@ -219,7 +207,6 @@ export default function Home() {
           <nav aria-label="Навигация в подвале" className="site-nav site-footer__nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
-            <a href="#contact">Контакты</a>
           </nav>
         </div>
       </footer>
