@@ -18,17 +18,9 @@ Sources: [Cormorant project](https://github.com/CatharsisFonts/Cormorant), [Goog
 
 ## Motion architecture
 
-`LandingMotion` is the only client-side animation controller. It enhances server-rendered `MediaFrame` figures using their typed motion keys. With JavaScript unavailable, all content and imagery remain visible in the authored composition.
+Photographic movement uses native CSS scroll-driven animations in `app/globals.css`. `MediaFrame` exposes a typed `data-photo-motion` profile, and CSS view timelines animate only the oversized inner image layer as its frame crosses the viewport. The frames remain in normal document flow, so the page does not pin sections or add artificial scroll distance. There is no JavaScript animation controller or animation dependency.
 
-- Hero: the photographs enter from 72% to full opacity over 850 ms while the headline copy enters over 600 ms. Opposing vertical movement separates the dominant loaf and supporting crumb detail; the main image slowly relaxes its scale.
-- Philosophy: the large portrait and detail move at different speeds; the detail's lower crop opens as it enters the viewport.
-- Assortment: short, restrained photographic travel and scale changes preserve the association with each description.
-- Baker: three distinct trajectories create depth; the hands photograph receives a small entry reveal.
-- Closing: a shallow bottom reveal and gradual scale change introduce the final loaf, which bridges the Milk strip into the Cocoa closing. The Cocoa background continues through the footer.
-
-The controller schedules one animation frame per scroll/resize update, caches layout measurements, and applies transforms plus selective clip paths. It never runs an idle animation loop. ResizeObserver and font readiness keep geometry current. Event listeners, scheduled work, and inline styles are cleaned up on unmount. A live reduced-motion preference disables the controller and resets all enhancements; CSS also disables entrances, hover motion, and smooth anchor scrolling. Mobile movement is 28% of the desktop travel.
-
-Native CSS scroll timelines would require a fallback across the target browsers; GSAP or Motion would add a dependency for bounded effects that need no physics or pinning. A small event-driven controller provides the required fallback behavior directly. No dependency or infrastructure changes are introduced.
+The motion profiles use restrained vertical, horizontal, gentle, and full-bleed movement. Overscan on the inner image layer keeps the frame covered throughout each translation. At widths up to 760px, portrait travel is reduced, horizontal details remain still, and full-bleed travel is shallower. Browsers without CSS view-timeline support show static images. The `prefers-reduced-motion` rule disables scroll movement, transitions, and smooth anchor scrolling.
 
 ## Photography
 

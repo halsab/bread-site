@@ -72,7 +72,7 @@ export default function Home() {
               motion="vertical"
               preload
               ratio="landscape"
-              sizes="(max-width: 760px) 55vw, 60vw"
+              sizes="(max-width: 760px) calc(39vw + 127px), (max-width: 980px) 55vw, 60vw"
               src="/images/hero-tartine.webp"
             />
             <MediaFrame
@@ -80,7 +80,7 @@ export default function Home() {
               className="hero__detail-media"
               motion="horizontal"
               ratio="landscape"
-              sizes="(max-width: 760px) 34vw, 24vw"
+              sizes="(max-width: 760px) calc(14.75vw + 64px), (max-width: 980px) 34vw, 24vw"
               src="/images/bread-crumb-detail.webp"
             />
           </div>
@@ -139,7 +139,7 @@ export default function Home() {
                   className="product__media"
                   motion="gentle"
                   ratio="portrait"
-                  sizes="(max-width: 520px) 90vw, (max-width: 760px) 44vw, 30vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 980px) 44vw, 30vw"
                   src={product.src}
                 />
                 <h3>{product.name}</h3>
