@@ -310,22 +310,13 @@ a:focus-visible {
 }
 
 .hero__photographs {
-  display: grid;
-  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
-  align-items: end;
-  gap: clamp(1.5rem, 5vw, 5rem);
   margin-top: 3rem;
+  margin-inline: calc(50% - 50vw);
 }
 
-.hero__media {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.hero__detail-media {
-  grid-column: 1;
-  grid-row: 1;
-  width: 85%;
+.hero__media .media-frame__surface {
+  aspect-ratio: 2 / 1;
+  max-height: 42rem;
 }
 
 .media-frame {
@@ -658,30 +649,11 @@ a:focus-visible {
   }
 
   .hero__photographs {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
     margin-top: 2.5rem;
-  }
-
-  /* Главный кадр плавно растёт к ширине основной сетки у перехода в боковую композицию. */
-  .hero__detail-media {
-    grid-column: 1;
-    grid-row: 1;
-    z-index: 1;
-    align-self: end;
-    width: clamp(30%, calc(14.75vw + 64px), 42%);
-    margin: 0 0 clamp(0.9rem, 3vw, 1.4rem);
   }
 
   .hero__media .media-frame__surface {
     aspect-ratio: 3 / 2;
-  }
-
-  .hero__media {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: end;
-    width: clamp(62%, calc(39vw + 127px), 90%);
   }
 
   .photo-transition .media-frame__surface {

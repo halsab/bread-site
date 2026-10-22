@@ -72,16 +72,8 @@ export default function Home() {
               motion="vertical"
               preload
               ratio="landscape"
-              sizes="(max-width: 760px) calc(39vw + 127px), (max-width: 980px) 55vw, 60vw"
+              sizes="100vw"
               src="/images/hero-tartine.webp"
-            />
-            <MediaFrame
-              alt=""
-              className="hero__detail-media"
-              motion="horizontal"
-              ratio="landscape"
-              sizes="(max-width: 760px) calc(14.75vw + 64px), (max-width: 980px) 34vw, 24vw"
-              src="/images/bread-crumb-detail.webp"
             />
           </div>
         </section>
