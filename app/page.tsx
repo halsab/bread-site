@@ -278,8 +278,10 @@ export default function Home() {
                 Иногда для хорошего момента достаточно свежего хлеба и людей,
                 с которыми хочется его разделить.
               </p>
+            </div>
+            <div className="closing__contacts">
               <h3 className="contact-heading" id="contacts" tabIndex={-1}>
-                Контакты
+                Написать сообщение
               </h3>
               {configuredContacts.length > 0 ? (
                 <nav aria-label="Связаться с пекарем" className="contact-links">
@@ -290,7 +292,8 @@ export default function Home() {
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      {contact.label}
+                      <span className="contact-link__name">{contact.label}</span>
+                      <span className="sr-only"> — откроется в новой вкладке</span>
                     </a>
                   ))}
                 </nav>
