@@ -1,13 +1,26 @@
 import { MediaFrame } from "@/components/media-frame";
 
-function getHttpsContactUrl(value: string | undefined): string | undefined {
+function getContactUrl(
+  value: string | undefined,
+  hostname: string,
+  pathname: RegExp,
+): string | undefined {
   if (!value) return undefined;
 
   try {
     const url = new URL(value);
-    return url.protocol === "https:" && !url.username && !url.password
-      ? url.href
-      : undefined;
+    if (
+      url.protocol !== "https:" ||
+      url.hostname !== hostname ||
+      url.username ||
+      url.password ||
+      !pathname.test(url.pathname) ||
+      url.search ||
+      url.hash
+    ) {
+      return undefined;
+    }
+    return value;
   } catch {
     return undefined;
   }
@@ -16,15 +29,25 @@ function getHttpsContactUrl(value: string | undefined): string | undefined {
 const contacts = [
   {
     label: "Telegram",
-    href: getHttpsContactUrl(process.env.NEXT_PUBLIC_TELEGRAM_URL),
+    href: getContactUrl(
+      process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "https://t.me/alisa_sabr",
+      "t.me",
+      /^\/[A-Za-z0-9_]{5,32}\/?$/,
+    ),
   },
-  { label: "MAX", href: getHttpsContactUrl(process.env.NEXT_PUBLIC_MAX_URL) },
+  {
+    label: "MAX",
+    href: getContactUrl(
+      process.env.NEXT_PUBLIC_MAX_URL ??
+        "https://max.ru/u/f9LHodD0cOIDSkO42jaZH-QksI9MMg-0iqhx4QJPqQkv3KChCeO60u-ov9M",
+      "max.ru",
+      /^\/u\/[A-Za-z0-9_-]+\/?$/,
+    ),
+  },
 ];
 const configuredContacts = contacts.filter(
   (contact): contact is typeof contact & { href: string } => Boolean(contact.href),
 );
-const hasAllContactUrls = configuredContacts.length === contacts.length;
-
 type Product = {
   name: string;
   description?: string;
@@ -237,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="closing-title" className="closing" id="contacts">
+        <section aria-labelledby="closing-title" className="closing">
           <MediaFrame
             alt="Свежевыпеченный тартин остывает на решётке."
             className="photo-transition"
@@ -255,8 +278,10 @@ export default function Home() {
                 Иногда для хорошего момента достаточно свежего хлеба и людей,
                 с которыми хочется его разделить.
               </p>
-              <h3 className="contact-heading">Контакты</h3>
-              {hasAllContactUrls ? (
+              <h3 className="contact-heading" id="contacts" tabIndex={-1}>
+                Контакты
+              </h3>
+              {configuredContacts.length > 0 ? (
                 <nav aria-label="Связаться с пекарем" className="contact-links">
                   {configuredContacts.map((contact) => (
                     <a
