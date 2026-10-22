@@ -140,7 +140,7 @@ The landing follows the approved [visual direction](https://docs.google.com/docu
 
 | Scene | Profile |
 | --- | --- |
-| Hero loaf / crumb detail | Vertical / horizontal |
+| Hero loaf | Full-bleed depth |
 | Philosophy ingredients | Vertical |
 | Full-width crumb transition | Full-bleed depth |
 | Four product portraits | Gentle vertical; descriptions and preliminary ingredients stay with the three existing cards |

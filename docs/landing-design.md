@@ -26,6 +26,8 @@ Photographic movement uses native CSS scroll-driven animations in `app/globals.c
 
 The motion profiles use restrained vertical, horizontal, gentle, and full-bleed movement. Overscan on the inner image layer keeps the frame covered throughout each translation. At widths up to 760px, portrait travel is reduced, horizontal details remain still, and full-bleed travel is shallower. Browsers without CSS view-timeline support show static images. The `prefers-reduced-motion` rule disables scroll movement, transitions, and smooth anchor scrolling.
 
+The hero, crumb transition, and closing photograph share the same full-width frame styles: viewport-based height with desktop/mobile bounds, cover cropping, and the full-bleed motion profile. The hero retains eager image preloading but has no separate aspect-ratio or height override.
+
 ## Photography
 
 Eleven WebP assets are used. Landscape assets are 1536 × 1024; portrait assets are 1122 × 1402. Aspect-ratio containers reserve their space, and responsive `sizes` declarations guide image delivery. The rye image is provisional generated editorial imagery and must not be described as an authentic photograph of the baker's bread. The repeated hero crumb image is decorative; informative photographs retain descriptive alternative text.

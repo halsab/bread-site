@@ -133,7 +133,7 @@ export default function Home() {
           <div aria-label="Хлеб крупным планом" className="hero__photographs" role="group">
             <MediaFrame
               alt="Целый тартин на льняной ткани и деревянном столе."
-              className="hero__media"
+              className="photo-transition"
               motion="full-bleed"
               preload
               ratio="landscape"
