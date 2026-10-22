@@ -10,7 +10,7 @@ The reference informed photographic scale, offset edges, whitespace, and quiet e
 
 Mobile uses a single reading sequence, smaller image overlaps, and reduced movement. At widths up to 400px, the longer MoolYort Bakery wordmark sits above the centered navigation. Text remains outside photographic overlaps. Native page scrolling and anchor navigation are preserved; there are no pinned scenes or artificial scroll distances.
 
-The closing area pairs the farewell copy with a separate contact group. A single “Написать сообщение” heading introduces the messenger links, which use large display names and quiet rules. At widths up to 900px, the contact group follows the copy and its two actions sit side by side; at widths up to 520px, they form full-width rows. The contact anchor focuses the compact heading, and keyboard focus remains visible on the heading and each link.
+The closing area pairs the farewell copy with a contact group bounded by thin top and bottom rules, with open sides and no fill. Its “Написать сообщение” heading and underlined messenger links share a left edge. The links use the display typeface at 1.5625rem, sit together with a 1.75rem gap, and wrap when needed. At widths up to 900px, the group follows the copy and aligns with the content column. The contact anchor focuses the compact heading, and keyboard focus remains visible on the heading and each link.
 
 The assortment heading and its introductory sentence form one left-aligned group above the product grid. Both share the grid's maximum width, keeping the heading aligned with the product photographs on wide screens.
 

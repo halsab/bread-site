@@ -576,10 +576,16 @@ a:focus-visible {
 
 .contact-heading {
   width: fit-content;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
   color: var(--flax);
   font-size: 0.875rem;
   font-weight: 500;
+}
+
+.closing__contacts {
+  padding-block: 1.5rem;
+  border-block: 1px solid rgb(245 240 230 / 28%);
+  text-align: left;
 }
 
 .contact-heading:focus-visible {
@@ -588,34 +594,35 @@ a:focus-visible {
 }
 
 .contact-links {
-  display: grid;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
 }
 
 .contact-links a {
-  display: flex;
-  min-height: 7rem;
+  display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
-  padding: 1.25rem 0.75rem;
-  border-top: 1px solid rgb(245 240 230 / 24%);
   color: var(--milk);
-  text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease;
-}
-
-.contact-links a:last-child {
-  border-bottom: 1px solid rgb(245 240 230 / 24%);
+  text-decoration: underline;
+  text-decoration-color: rgb(245 240 230 / 38%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
 }
 
 .contact-link__name {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 3.5vw, 3rem);
+  font-size: 1.5625rem;
   font-weight: 500;
   line-height: 1;
 }
 
 .contact-links a:hover,
 .contact-links a:focus-visible {
-  background: rgb(245 240 230 / 6%);
+  color: var(--flax);
+  text-decoration-color: currentColor;
 }
 
 .contact-links a:focus-visible {
@@ -657,15 +664,6 @@ a:focus-visible {
 
   .closing .section-title {
     max-width: 16ch;
-  }
-
-  .contact-links {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem;
-  }
-
-  .contact-links a {
-    border-bottom: 1px solid rgb(245 240 230 / 24%);
   }
 
   .philosophy {
@@ -855,16 +853,6 @@ a:focus-visible {
 
   .closing__copy > p {
     font-size: 0.94rem;
-  }
-
-  .contact-links {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-  }
-
-  .contact-links a {
-    min-height: 6.5rem;
-    border-bottom: 0;
   }
 
   .site-footer__inner {
