@@ -1,6 +1,28 @@
 import { MediaFrame } from "@/components/media-frame";
 
-const products = [
+const TELEGRAM_URL = "https://t.me/alisa_sabr";
+const MAX_URL =
+  "https://max.ru/u/f9LHodD0cOIDSkO42jaZH-QksI9MMg-0iqhx4QJPqQkv3KChCeO60u-ov9M";
+
+const contacts = [
+  {
+    label: "Telegram",
+    href: TELEGRAM_URL,
+  },
+  {
+    label: "MAX",
+    href: MAX_URL,
+  },
+];
+type Product = {
+  name: string;
+  description?: string;
+  ingredients?: string;
+  alt: string;
+  src: string;
+};
+
+const products: Product[] = [
   {
     name: "Тартин классический",
     description:
@@ -27,6 +49,14 @@ const products = [
     alt: "Формовая тыквенная буханка с тыквенными семечками.",
     src: "/images/pumpkin-loaf.webp",
   },
+  {
+    name: "Ржаной хлеб на закваске",
+    description:
+      "Ржаной хлеб на закваске с тёмной корочкой и пористым мякишем. Хорош к супу, сыру или просто так.",
+    ingredients: "ржаная мука, вода, ржаная закваска, соль.",
+    alt: "Разрезанная буханка ржаного хлеба и ломтики на деревянной доске.",
+    src: "/images/rye-sourdough.webp",
+  },
 ];
 
 export default function Home() {
@@ -38,12 +68,13 @@ export default function Home() {
 
       <header className="site-header">
         <div className="site-header__inner site-shell">
-          <a aria-label="Bread — в начало страницы" className="wordmark" href="#top">
-            Bread
+          <a aria-label="MoolYort Bakery — в начало страницы" className="wordmark" href="#top">
+            MoolYort Bakery
           </a>
           <nav aria-label="Основная навигация" className="site-nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
+            <a href="#contacts">Контакты</a>
           </nav>
         </div>
       </header>
@@ -68,7 +99,7 @@ export default function Home() {
           <div aria-label="Хлеб крупным планом" className="hero__photographs" role="group">
             <MediaFrame
               alt="Целый тартин на льняной ткани и деревянном столе."
-              className="hero__media"
+              className="photo-transition"
               motion="full-bleed"
               preload
               ratio="landscape"
@@ -115,12 +146,12 @@ export default function Home() {
           src="/images/bread-crumb-detail.webp"
         />
 
-        <section aria-labelledby="bread-title" className="products section-shell" id="bread">
-          <div className="products__intro">
+        <section aria-labelledby="bread-title" className="products section-shell">
+          <div className="products__intro" id="bread">
             <h2 className="section-title" id="bread-title">
               Что я пеку
             </h2>
-            <p>Три варианта хлеба с одной простой основой — и разным характером.</p>
+            <p>Четыре вида хлеба, объединённые вниманием к процессу.</p>
           </div>
 
           <div className="product-grid">
@@ -131,21 +162,25 @@ export default function Home() {
                   className="product__media"
                   motion="gentle"
                   ratio="portrait"
-                  sizes="(max-width: 640px) 90vw, (max-width: 980px) 44vw, 30vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1279px) 44vw, 16rem"
                   src={product.src}
                 />
                 <h3>{product.name}</h3>
-                <p className="product__description">{product.description}</p>
-                <p className="product__ingredients">
-                  <span>Предварительный состав:</span> {product.ingredients}
-                </p>
+                {product.description ? (
+                  <p className="product__description">{product.description}</p>
+                ) : null}
+                {product.ingredients ? (
+                  <p className="product__ingredients">
+                    <span>Состав:</span> {product.ingredients}
+                  </p>
+                ) : null}
               </article>
             ))}
           </div>
         </section>
 
-        <section aria-labelledby="about-title" className="story section-shell" id="about">
-          <div className="story__copy">
+        <section aria-labelledby="about-title" className="story section-shell">
+          <div className="story__copy" id="about">
             <h2 className="section-title" id="about-title">
               Немного обо мне и моём хлебе
             </h2>
@@ -155,7 +190,7 @@ export default function Home() {
               буханки. Мне нравится этот процесс — от первых движений с тестом
               до момента, когда хлеб остывает после выпечки. Пока в моей
               небольшой коллекции всего несколько видов, но у каждого свой
-              характер. Bread — место, где я могу показать свой хлеб и
+              характер. MoolYort Bakery — место, где я могу показать свой хлеб и
               поделиться тем, что в нём люблю.
             </p>
           </div>
@@ -191,7 +226,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="closing-title" className="closing" id="closing">
+        <section aria-labelledby="closing-title" className="closing">
           <MediaFrame
             alt="Свежевыпеченный тартин остывает на решётке."
             className="photo-transition"
@@ -210,6 +245,24 @@ export default function Home() {
                 с которыми хочется его разделить.
               </p>
             </div>
+            <div className="closing__contacts">
+              <h3 className="contact-heading" id="contacts" tabIndex={-1}>
+                Хотите заказать хлеб? Напишите мне
+              </h3>
+              <nav aria-label="Связаться с пекарем" className="contact-links">
+                {contacts.map((contact) => (
+                  <a
+                    href={contact.href}
+                    key={contact.label}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="contact-link__name">{contact.label}</span>
+                    <span className="sr-only"> — откроется в новой вкладке</span>
+                  </a>
+                ))}
+              </nav>
+            </div>
           </div>
         </section>
       </main>
@@ -218,13 +271,14 @@ export default function Home() {
         <div className="site-footer__inner site-shell">
           <div className="site-footer__brand">
             <a className="wordmark" href="#top">
-              Bread
+              MoolYort Bakery
             </a>
             <p>Домашний хлеб ручной работы.</p>
           </div>
           <nav aria-label="Навигация в подвале" className="site-nav site-footer__nav">
             <a href="#bread">Наш хлеб</a>
             <a href="#about">О пекаре</a>
+            <a href="#contacts">Контакты</a>
           </nav>
         </div>
       </footer>

@@ -140,10 +140,10 @@ The landing follows the approved [visual direction](https://docs.google.com/docu
 
 | Scene | Profile |
 | --- | --- |
-| Hero loaf / crumb detail | Vertical / horizontal |
+| Hero loaf | Full-bleed depth |
 | Philosophy ingredients | Vertical |
 | Full-width crumb transition | Full-bleed depth |
-| Three product portraits | Gentle vertical, with aligned frames and descriptions |
+| Four product portraits | Gentle vertical motion in the responsive product grid |
 | Baker portrait / hands / proofing dough | Vertical / horizontal / still |
 | Full-width freshly baked loaf | Full-bleed depth |
 
@@ -152,3 +152,7 @@ The internal layer has 8% overscan for vertical/horizontal motion, 3% for gentle
 At widths up to 760px, portrait movement uses the gentle profile, horizontal details become still, and full-bleed scenes use the vertical profile with a mobile-specific height and crop. Reduced-motion preferences and browsers without CSS view-timeline support show static photographs with all content visible.
 
 Landscape source files are 1536×1024 and portrait files are 1122×1402. The full-width scenes use existing landscape assets; large or high-density displays are limited by that source detail. Use higher-resolution approved originals when available, rather than enlarging the files artificially.
+
+The fourth product is named `Ржаной хлеб на закваске`. Its description notes the dark crust and porous crumb shown in the supplied image and suggests serving ideas. The displayed composition (`ржаная мука, вода, ржаная закваска, соль`) is a provisional editorial draft and must be checked against the actual recipe before it is treated as verified; allergens also require confirmation. `public/images/rye-sourdough.webp` is provisional generated editorial imagery, not authenticated bakery photography. Existing requirements for authentic photography and verified ingredients and allergens still apply.
+
+The header and footer link directly to the contact heading. Telegram and MAX use the baker's supplied personal profile URLs, defined as static constants in `app/page.tsx`. To change a contact, update its URL constant, build the site, and redeploy it. Both links open in a separate tab with safe navigation attributes. These personal channels do not form an ordering system: the site has no cart, checkout, payment flow, or order database.
