@@ -62,6 +62,9 @@ const products: Product[] = [
   },
   {
     name: "Ржаной хлеб на закваске",
+    description:
+      "Ржаной хлеб на закваске с тёмной корочкой и пористым мякишем. Хорош к супу, сыру или просто так.",
+    ingredients: "ржаная мука, вода, ржаная закваска, соль.",
     alt: "Разрезанная буханка ржаного хлеба и ломтики на деревянной доске.",
     src: "/images/rye-sourdough.webp",
   },
@@ -179,7 +182,7 @@ export default function Home() {
                 ) : null}
                 {product.ingredients ? (
                   <p className="product__ingredients">
-                    <span>Предварительный состав:</span> {product.ingredients}
+                    <span>Состав:</span> {product.ingredients}
                   </p>
                 ) : null}
               </article>
