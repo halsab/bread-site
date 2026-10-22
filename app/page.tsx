@@ -69,7 +69,7 @@ export default function Home() {
             <MediaFrame
               alt="Целый тартин на льняной ткани и деревянном столе."
               className="hero__media"
-              motion="vertical"
+              motion="full-bleed"
               preload
               ratio="landscape"
               sizes="100vw"

@@ -315,6 +315,7 @@ a:focus-visible {
 }
 
 .hero__media .media-frame__surface {
+  width: 100%;
   aspect-ratio: 2 / 1;
   max-height: 42rem;
 }
