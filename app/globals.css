@@ -450,15 +450,15 @@ a:focus-visible {
 
 .products__intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.6fr);
-  align-items: end;
-  gap: 3rem;
-  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  gap: 1rem;
+  max-width: 72rem;
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 4.5vw, 4rem);
 }
 
 .products__intro > p {
-  max-width: 25rem;
-  margin: 0 0 0.45rem;
+  max-width: 36rem;
+  margin: 0;
   color: var(--cocoa);
   font-size: 1rem;
   line-height: 1.75;
@@ -779,13 +779,11 @@ a:focus-visible {
   }
 
   .products__intro {
-    display: block;
     margin-bottom: 3rem;
   }
 
   .products__intro > p {
     max-width: 25rem;
-    margin-top: 1rem;
     font-size: 0.93rem;
   }
 

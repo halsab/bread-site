@@ -12,6 +12,8 @@ Mobile uses a single reading sequence, smaller image overlaps, and reduced movem
 
 The closing area pairs the farewell copy with a separate contact group. A single “Написать сообщение” heading introduces the messenger links, which use large display names and quiet rules. At widths up to 900px, the contact group follows the copy and its two actions sit side by side; at widths up to 520px, they form full-width rows. The contact anchor focuses the compact heading, and keyboard focus remains visible on the heading and each link.
 
+The assortment heading and its introductory sentence form one left-aligned group above the product grid. Both share the grid's maximum width, keeping the heading aligned with the product photographs on wide screens.
+
 ## Typography
 
 Cormorant Garamond Medium supplies the Cyrillic display voice; Manrope Regular and Medium keep longer passages and navigation readable. Only the used Cyrillic and Latin WOFF2 subsets are hosted locally, with `font-display: swap`, serif/sans-serif fallbacks, and preloads for the two display subsets. Font assets total approximately 79 KB before licenses. No runtime request to a font CDN is required.
