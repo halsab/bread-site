@@ -247,7 +247,7 @@ export default function Home() {
             </div>
             <div className="closing__contacts">
               <h3 className="contact-heading" id="contacts" tabIndex={-1}>
-                Написать сообщение
+                Хотите заказать хлеб? Напишите мне
               </h3>
               <nav aria-label="Связаться с пекарем" className="contact-links">
                 {contacts.map((contact) => (
