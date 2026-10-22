@@ -6,7 +6,8 @@ const products = [
     description:
       "Пшеничный хлеб на закваске с румяной корочкой и мягким, упругим мякишем. Хорош с маслом, сыром или просто так.",
     ingredients: "пшеничная мука, вода, пшеничная закваска, соль.",
-    alt: "Классический тартин.",
+    alt: "Классический тартин с румяной корочкой.",
+    src: "/images/classic-tartine.webp",
   },
   {
     name: "Тартин с семенами льна",
@@ -14,7 +15,8 @@ const products = [
       "Знакомый тартин с семенами льна. Они добавляют приятную фактуру и мягкий ореховый оттенок вкуса, не заслоняя сам хлеб.",
     ingredients:
       "пшеничная мука, вода, пшеничная закваска, соль, семена льна.",
-    alt: "Тартин с семенами льна.",
+    alt: "Тартин с семенами льна на корочке.",
+    src: "/images/flaxseed-tartine.webp",
   },
   {
     name: "Тыквенный хлеб",
@@ -23,6 +25,7 @@ const products = [
     ingredients:
       "пшеничная мука, вода, пшеничная закваска, соль, тыквенное пюре, тыквенные семечки.",
     alt: "Формовая тыквенная буханка с тыквенными семечками.",
+    src: "/images/pumpkin-loaf.webp",
   },
 ];
 
@@ -68,6 +71,7 @@ export default function Home() {
             preload
             ratio="landscape"
             sizes="(max-width: 760px) 100vw, 48vw"
+            src="/images/hero-tartine.webp"
           />
         </section>
 
@@ -90,17 +94,19 @@ export default function Home() {
           </div>
 
           <MediaFrame
-            alt="Хлеб и простые ингредиенты в мягком естественном свете."
+            alt="Тартин рядом с мукой, водой и закваской."
             className="philosophy__main-media reveal"
             ratio="portrait"
             sizes="(max-width: 760px) 100vw, 42vw"
+            src="/images/philosophy-ingredients.webp"
           />
 
           <MediaFrame
-            alt="Разрез хлеба с выразительной фактурой мякиша."
+            alt="Разрезанный хлеб с воздушным мякишем."
             className="philosophy__detail-media reveal"
             ratio="landscape"
             sizes="(max-width: 760px) 100vw, 30vw"
+            src="/images/bread-crumb-detail.webp"
           />
         </section>
 
@@ -120,6 +126,7 @@ export default function Home() {
                   className="product__media"
                   ratio="portrait"
                   sizes="(max-width: 620px) 100vw, (max-width: 980px) 46vw, 30vw"
+                  src={product.src}
                 />
                 <h3>{product.name}</h3>
                 <p className="product__description">{product.description}</p>
@@ -153,23 +160,26 @@ export default function Home() {
             role="group"
           >
             <MediaFrame
-              alt="Портрет пекаря."
+              alt="Фигура пекаря со спины за рабочим столом; лицо не видно."
               className="story__portrait reveal"
               ratio="portrait"
               sizes="(max-width: 760px) 100vw, 29vw"
+              src="/images/baker-silhouette.webp"
             />
             <div className="story__details">
               <MediaFrame
-                alt="Руки пекаря в работе с тестом."
+                alt="Руки формуют тесто на посыпанном мукой столе."
                 className="reveal"
                 ratio="portrait"
                 sizes="(max-width: 760px) 46vw, 16vw"
+                src="/images/baker-hands-dough.webp"
               />
               <MediaFrame
-                alt="Заготовки теста до выпечки в корзинках или формах."
+                alt="Заготовки теста расстаиваются в плетёных корзинах."
                 className="reveal"
                 ratio="portrait"
                 sizes="(max-width: 760px) 46vw, 16vw"
+                src="/images/dough-before-baking.webp"
               />
             </div>
           </div>
@@ -187,10 +197,11 @@ export default function Home() {
               </p>
             </div>
             <MediaFrame
-              alt="Готовая буханка хлеба после выпечки."
+              alt="Свежевыпеченный тартин остывает на решётке."
               className="closing__media reveal"
               ratio="landscape"
               sizes="(max-width: 760px) 100vw, 46vw"
+              src="/images/freshly-baked-loaf.webp"
             />
           </div>
         </section>
