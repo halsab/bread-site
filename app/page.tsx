@@ -1,106 +1,228 @@
-const sidebarWidths = [74, 58, 82, 66, 71, 54];
-const articleWidths = [100, 97, 94, 98, 86];
+import { MediaFrame } from "@/components/media-frame";
+
+const products = [
+  {
+    name: "Тартин классический",
+    description:
+      "Пшеничный хлеб на закваске с румяной корочкой и мягким, упругим мякишем. Хорош с маслом, сыром или просто так.",
+    ingredients: "пшеничная мука, вода, пшеничная закваска, соль.",
+    alt: "Классический тартин.",
+    caption: "Классический тартин · 4:5",
+  },
+  {
+    name: "Тартин с семенами льна",
+    description:
+      "Знакомый тартин с семенами льна. Они добавляют приятную фактуру и мягкий ореховый оттенок вкуса, не заслоняя сам хлеб.",
+    ingredients:
+      "пшеничная мука, вода, пшеничная закваска, соль, семена льна.",
+    alt: "Тартин с семенами льна.",
+    caption: "Тартин с семенами льна · 4:5",
+  },
+  {
+    name: "Тыквенный хлеб",
+    description:
+      "Домашняя формовая буханка с тыквенным пюре и тыквенными семечками. Нежный мякиш, лёгкая сладость тыквы и приятный контраст семечек.",
+    ingredients:
+      "пшеничная мука, вода, пшеничная закваска, соль, тыквенное пюре, тыквенные семечки.",
+    alt: "Формовая тыквенная буханка с тыквенными семечками.",
+    caption: "Тыквенный хлеб · формовая буханка · 4:5",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="fixed inset-0 overflow-hidden bg-[#fbfaf8] text-zinc-900">
-      <header
-        aria-hidden="true"
-        className="grid h-[76px] grid-cols-[1fr_auto_1fr] items-center border-b border-stone-200 bg-white/95 px-6 sm:px-14"
-      >
-        <div className="flex items-center gap-3">
-          <span className="h-9 w-9 rounded-full bg-stone-100" />
-          <span className="h-3.5 w-28 rounded-full bg-stone-100" />
-        </div>
-        <span className="hidden h-9 w-[min(30vw,420px)] rounded-xl bg-stone-100 sm:block" />
-        <div className="flex items-center justify-end gap-3">
-          <span className="hidden h-9 w-9 rounded-full bg-stone-100 sm:block" />
-          <span className="h-9 w-24 rounded-xl bg-stone-100" />
+    <>
+      <a className="skip-link" href="#main">
+        Перейти к содержанию
+      </a>
+
+      <header className="site-header">
+        <div className="site-header__inner site-shell">
+          <a aria-label="Bread — в начало страницы" className="wordmark" href="#top">
+            Bread
+          </a>
+          <nav aria-label="Основная навигация" className="site-nav">
+            <a href="#bread">Наш хлеб</a>
+            <a href="#about">О пекаре</a>
+            <a href="#contact">Контакты</a>
+          </nav>
         </div>
       </header>
 
-      <div
-        aria-hidden="true"
-        className="grid h-[calc(100%-76px)] grid-cols-[180px_minmax(0,1fr)_260px] gap-10 px-6 pb-24 pt-10 opacity-55 max-lg:grid-cols-[150px_minmax(0,1fr)] max-sm:grid-cols-1 sm:px-14"
-      >
-        <aside className="hidden border-r border-stone-200 pr-7 sm:block">
-          <div className="mb-6 h-2.5 w-16 rounded-full bg-stone-200" />
-          <div className="space-y-4">
-            {sidebarWidths.map((width) => (
-              <div key={width} className="flex items-center gap-3">
-                <span className="h-4 w-4 rounded bg-stone-200" />
-                <span
-                  className="h-2.5 rounded-full bg-stone-200"
-                  style={{ width: `${width}%` }}
+      <main id="main">
+        <section aria-labelledby="hero-title" className="hero site-shell" id="top">
+          <div className="hero__copy">
+            <p className="eyebrow">ДОМАШНИЙ ХЛЕБ РУЧНОЙ РАБОТЫ</p>
+            <h1 id="hero-title">Хлеб, которым хочется делиться.</h1>
+            <p className="hero__description">
+              Домашний тартин и хлеб на закваске — с хрустящей корочкой,
+              мягким мякишем и вниманием к каждой детали.
+            </p>
+            <a className="text-link hero__link" href="#bread">
+              Посмотреть хлеб
+              <svg aria-hidden="true" viewBox="0 0 22 18">
+                <path d="M1 9h18M12 2l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <MediaFrame
+            alt="Целый тартин на льняной ткани и деревянном столе."
+            caption="Целый тартин · главное фото · 3:2"
+            className="hero__media"
+            priority
+            ratio="landscape"
+            sizes="(max-width: 760px) 100vw, 48vw"
+          />
+        </section>
+
+        <section
+          aria-labelledby="philosophy-title"
+          className="philosophy section-shell"
+          id="philosophy"
+        >
+          <div className="philosophy__copy reveal">
+            <h2 className="section-title" id="philosophy-title">
+              Всё начинается с простого.
+            </h2>
+            <p>
+              Мука, вода, закваска и соль. Знакомые ингредиенты, из которых
+              каждый раз получается немного разный хлеб. Я люблю этот неспешный
+              процесс: наблюдать за тестом, ждать нужного момента и вынимать из
+              печи тёплую буханку. А потом — отрезать первый ломтик и делиться
+              им.
+            </p>
+          </div>
+
+          <MediaFrame
+            alt="Хлеб и простые ингредиенты в мягком естественном свете."
+            caption="Хлеб и простые ингредиенты · 4:5"
+            className="philosophy__main-media reveal"
+            ratio="portrait"
+            sizes="(max-width: 760px) 100vw, 42vw"
+          />
+
+          <MediaFrame
+            alt="Разрез хлеба с выразительной фактурой мякиша."
+            caption="Разрез хлеба · фактура мякиша · 3:2"
+            className="philosophy__detail-media reveal"
+            ratio="landscape"
+            sizes="(max-width: 760px) 100vw, 30vw"
+          />
+        </section>
+
+        <section aria-labelledby="bread-title" className="products section-shell" id="bread">
+          <div className="products__intro reveal">
+            <h2 className="section-title" id="bread-title">
+              Что я пеку
+            </h2>
+            <p>Три варианта хлеба с одной простой основой — и разным характером.</p>
+          </div>
+
+          <div className="product-grid">
+            {products.map((product) => (
+              <article className="product reveal" key={product.name}>
+                <MediaFrame
+                  alt={product.alt}
+                  caption={product.caption}
+                  className="product__media"
+                  ratio="portrait"
+                  sizes="(max-width: 620px) 100vw, (max-width: 980px) 46vw, 30vw"
                 />
-              </div>
+                <h3>{product.name}</h3>
+                <p className="product__description">{product.description}</p>
+                <p className="product__ingredients">
+                  <span>Предварительный состав:</span> {product.ingredients}
+                </p>
+              </article>
             ))}
           </div>
-          <div className="mb-6 mt-9 h-2.5 w-24 rounded-full bg-stone-200" />
-          <div className="space-y-4">
-            {sidebarWidths.slice(0, 3).map((width) => (
-              <span
-                key={width}
-                className="block h-2.5 rounded-full bg-stone-200"
-                style={{ width: `${width}%` }}
-              />
-            ))}
-          </div>
-        </aside>
+        </section>
 
-        <article className="mx-auto flex w-full max-w-3xl flex-col gap-6">
-          <div className="space-y-3">
-            <div className="h-2.5 w-28 rounded-full bg-stone-200" />
-            <div className="h-7 w-4/5 rounded-lg bg-stone-200" />
-            <div className="h-7 w-3/5 rounded-lg bg-stone-200" />
+        <section aria-labelledby="about-title" className="story section-shell" id="about">
+          <div className="story__copy reveal">
+            <h2 className="section-title" id="about-title">
+              Немного обо мне и моём хлебе
+            </h2>
+            <p>
+              Я пеку хлеб дома. Иногда кухня превращается в маленькую пекарню:
+              на столе тесто, рядом мука, а весь день живёт в ожидании готовой
+              буханки. Мне нравится этот процесс — от первых движений с тестом
+              до момента, когда хлеб остывает после выпечки. Пока в моей
+              небольшой коллекции всего несколько видов, но у каждого свой
+              характер. Bread — место, где я могу показать свой хлеб и
+              поделиться тем, что в нём люблю.
+            </p>
           </div>
-          <div className="min-h-[240px] flex-1 rounded-2xl bg-stone-200" />
-          <div className="flex items-center gap-3">
-            <span className="h-9 w-9 rounded-full bg-stone-200" />
-            <span className="h-2.5 w-28 rounded-full bg-stone-200" />
-          </div>
-          <div className="space-y-2">
-            {articleWidths.map((width) => (
-              <span
-                key={width}
-                className="block h-2.5 rounded-full bg-stone-200"
-                style={{ width: `${width}%` }}
-              />
-            ))}
-          </div>
-        </article>
 
-        <aside className="space-y-5 max-lg:hidden">
-          {[0, 1].map((card) => (
-            <div
-              key={card}
-              className="space-y-4 rounded-2xl border border-stone-200 bg-white/70 p-6"
-            >
-              <span className="block h-10 w-10 rounded-full bg-stone-200" />
-              <span className="block h-3 w-3/5 rounded-full bg-stone-200" />
-              <span className="block h-2.5 w-full rounded-full bg-stone-200" />
-              <span className="block h-2.5 w-4/5 rounded-full bg-stone-200" />
-              <span className="block h-8 w-24 rounded-lg bg-stone-200" />
+          <div
+            aria-label="Фотографии процесса и пекаря"
+            className="story__gallery"
+            role="group"
+          >
+            <MediaFrame
+              alt="Пекарь в нейтральном кадре рук или силуэта."
+              caption="Пекарь · реальное фото или силуэт · 4:5"
+              className="story__portrait reveal"
+              ratio="portrait"
+              sizes="(max-width: 760px) 100vw, 29vw"
+            />
+            <div className="story__details">
+              <MediaFrame
+                alt="Руки пекаря в работе с тестом."
+                caption="Руки в работе · 4:5"
+                className="reveal"
+                ratio="portrait"
+                sizes="(max-width: 760px) 46vw, 16vw"
+              />
+              <MediaFrame
+                alt="Заготовки теста до выпечки в корзинках или формах."
+                caption="Тесто до выпечки · 4:5"
+                className="reveal"
+                ratio="portrait"
+                sizes="(max-width: 760px) 46vw, 16vw"
+              />
             </div>
-          ))}
-        </aside>
-      </div>
+          </div>
+        </section>
 
-      <output
-        aria-live="polite"
-        aria-atomic="true"
-        className="absolute left-1/2 top-[clamp(96px,13vh,122px)] w-[min(620px,calc(100%-40px))] -translate-x-1/2 rounded-[18px] border border-stone-200 bg-white/95 px-5 py-5 shadow-[0_18px_50px_rgb(24_24_27/9%)] backdrop-blur-sm"
-      >
-        <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.09em] text-stone-500">
-          Building your site
-        </p>
-        <h1 className="text-xl font-semibold tracking-tight">
-          Your site is taking shape
-        </h1>
-        <p className="mt-1 text-sm text-stone-500">
-          Your first version will appear here automatically when it’s ready.
-        </p>
-      </output>
-    </main>
+        <section aria-labelledby="contact-title" className="closing" id="contact">
+          <div className="closing__inner section-shell">
+            <div className="closing__copy reveal">
+              <h2 className="section-title" id="contact-title">
+                До встречи за хлебом.
+              </h2>
+              <p>
+                Иногда для хорошего момента достаточно свежего хлеба и людей,
+                с которыми хочется его разделить.
+              </p>
+            </div>
+            <MediaFrame
+              alt="Готовая буханка хлеба после выпечки."
+              caption="Хлеб после выпечки · 3:2"
+              className="closing__media reveal"
+              ratio="landscape"
+              sizes="(max-width: 760px) 100vw, 46vw"
+            />
+          </div>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <div className="site-footer__inner site-shell">
+          <div className="site-footer__brand">
+            <a className="wordmark" href="#top">
+              Bread
+            </a>
+            <p>Домашний хлеб ручной работы.</p>
+          </div>
+          <nav aria-label="Навигация в подвале" className="site-nav site-footer__nav">
+            <a href="#bread">Наш хлеб</a>
+            <a href="#about">О пекаре</a>
+            <a href="#contact">Контакты</a>
+          </nav>
+        </div>
+      </footer>
+    </>
   );
 }
