@@ -1,4 +1,5 @@
 import { MediaFrame } from "@/components/media-frame";
+import { LandingMotion } from "@/components/landing-motion";
 
 const products = [
   {
@@ -49,6 +50,7 @@ export default function Home() {
       </header>
 
       <main id="main">
+        <LandingMotion />
         <section aria-labelledby="hero-title" className="hero site-shell" id="top">
           <div className="hero__copy">
             <p className="eyebrow">ДОМАШНИЙ ХЛЕБ РУЧНОЙ РАБОТЫ</p>
@@ -65,14 +67,25 @@ export default function Home() {
             </a>
           </div>
 
-          <MediaFrame
-            alt="Целый тартин на льняной ткани и деревянном столе."
-            className="hero__media"
-            preload
-            ratio="landscape"
-            sizes="(max-width: 760px) 100vw, 48vw"
-            src="/images/hero-tartine.webp"
-          />
+          <div aria-label="Хлеб крупным планом" className="hero__photographs" role="group">
+            <MediaFrame
+              alt="Целый тартин на льняной ткани и деревянном столе."
+              className="hero__media"
+              motion="hero-main"
+              preload
+              ratio="landscape"
+              sizes="(max-width: 760px) 90vw, 58vw"
+              src="/images/hero-tartine.webp"
+            />
+            <MediaFrame
+              alt=""
+              className="hero__detail-media"
+              motion="hero-detail"
+              ratio="landscape"
+              sizes="(max-width: 760px) 46vw, 24vw"
+              src="/images/bread-crumb-detail.webp"
+            />
+          </div>
         </section>
 
         <section
@@ -96,14 +109,16 @@ export default function Home() {
           <MediaFrame
             alt="Тартин рядом с мукой, водой и закваской."
             className="philosophy__main-media reveal"
+            motion="philosophy-main"
             ratio="portrait"
-            sizes="(max-width: 760px) 100vw, 42vw"
+            sizes="(max-width: 760px) 90vw, 48vw"
             src="/images/philosophy-ingredients.webp"
           />
 
           <MediaFrame
             alt="Разрезанный хлеб с воздушным мякишем."
             className="philosophy__detail-media reveal"
+            motion="philosophy-detail"
             ratio="landscape"
             sizes="(max-width: 760px) 100vw, 30vw"
             src="/images/bread-crumb-detail.webp"
@@ -124,6 +139,7 @@ export default function Home() {
                 <MediaFrame
                   alt={product.alt}
                   className="product__media"
+                  motion="product"
                   ratio="portrait"
                   sizes="(max-width: 620px) 100vw, (max-width: 980px) 46vw, 30vw"
                   src={product.src}
@@ -162,6 +178,7 @@ export default function Home() {
             <MediaFrame
               alt="Фигура пекаря со спины за рабочим столом; лицо не видно."
               className="story__portrait reveal"
+              motion="story-portrait"
               ratio="portrait"
               sizes="(max-width: 760px) 100vw, 29vw"
               src="/images/baker-silhouette.webp"
@@ -170,13 +187,15 @@ export default function Home() {
               <MediaFrame
                 alt="Руки формуют тесто на посыпанном мукой столе."
                 className="reveal"
+                motion="story-hands"
                 ratio="portrait"
-                sizes="(max-width: 760px) 46vw, 16vw"
+                sizes="(max-width: 760px) 42vw, 22vw"
                 src="/images/baker-hands-dough.webp"
               />
               <MediaFrame
                 alt="Заготовки теста расстаиваются в плетёных корзинах."
                 className="reveal"
+                motion="story-dough"
                 ratio="portrait"
                 sizes="(max-width: 760px) 46vw, 16vw"
                 src="/images/dough-before-baking.webp"
@@ -187,6 +206,14 @@ export default function Home() {
 
         <section aria-labelledby="closing-title" className="closing" id="closing">
           <div className="closing__inner section-shell">
+            <MediaFrame
+              alt="Свежевыпеченный тартин остывает на решётке."
+              className="closing__media reveal"
+              motion="closing"
+              ratio="landscape"
+              sizes="(max-width: 1600px) 89vw, 1152px"
+              src="/images/freshly-baked-loaf.webp"
+            />
             <div className="closing__copy reveal">
               <h2 className="section-title" id="closing-title">
                 До встречи за хлебом.
@@ -196,13 +223,6 @@ export default function Home() {
                 с которыми хочется его разделить.
               </p>
             </div>
-            <MediaFrame
-              alt="Свежевыпеченный тартин остывает на решётке."
-              className="closing__media reveal"
-              ratio="landscape"
-              sizes="(max-width: 760px) 100vw, 46vw"
-              src="/images/freshly-baked-loaf.webp"
-            />
           </div>
         </section>
       </main>
