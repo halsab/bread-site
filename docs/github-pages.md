@@ -23,17 +23,27 @@ The existing `npm run build` remains the ChatGPT Sites/Cloudflare Worker build.
 
 ## First publication
 
-Complete these prerequisites **before merging** the `github-pages` pull request into `main`:
+Release decision (approved by the product owner on 2026-10-26): proceed with the first public GitHub Pages deployment before completing all production-browser checks. Treat the first release as an initial publication followed by production verification and corrections as needed. This decision supersedes the earlier requirement to keep PR #3 in draft solely because reduced-motion and complete production network checks were unavailable. It does **not** mean those scenarios were tested or passed.
 
-1. As a repository administrator, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. Enabling Actions alone is insufficient. Do not rely on `actions/configure-pages` to create or enable the Pages site using the default `GITHUB_TOKEN`.
-2. Open **Settings → Environments**. Create the `github-pages` environment manually if it does not exist; do not wait for the first deployment to create an unrestricted environment. Under its **Deployment branches and tags** rules, choose **Selected branches and tags** and allow only `main` (do not substitute **Protected branches only** unless `main` is actually protected).
-3. Build and validate the static artifact at `/bread-site/` in a browser, including desktop/mobile, images/fonts, navigation/contact links, scroll motion, reduced motion, and console/network errors. Keep the PR as draft and do not merge if mandatory verification remains unavailable.
-4. Once the prerequisites and review checks are satisfied, merge the `github-pages` pull request into `main`. The push to `main` triggers the workflow automatically; do not manually run a duplicate deployment. If a rerun is necessary, select the `main` branch in **Actions → GitHub Pages → Run workflow**.
-5. Confirm the deployment succeeds and open https://halsab.github.io/bread-site/. Recheck the production website before retiring ChatGPT Sites.
+The product owner has also explicitly authorized publishing the current provisional editorial photographs and bread descriptions/ingredients as-is for the first release. This is acceptance of the known content risk, **not verification** of photographic authenticity, recipes, or allergens. The rye image remains provisional generated imagery and rye ingredients remain unverified as documented in `docs/landing-design.md` and `docs/image-inventory.md`. Validate and correct these assets and claims after publication; do not label them authenticated in documentation.
 
-Repository settings and deployment environment protection rules are administrative actions; this repository workflow does not configure them automatically.
+### Before merging PR #3
 
-Pull requests run the build and checks but **never deploy**. Merging into `main` publishes automatically. No repository secrets or personal access token are required for the official Pages deployment actions.
+1. Confirm the latest pull-request GitHub Actions run passes lint, TypeScript, the original ChatGPT Sites/Workers build, the Pages static build, and artifact validation.
+2. As a repository administrator, under **Settings → Pages → Build and deployment → Source**, select **GitHub Actions**. Enabling Actions alone is insufficient. `actions/configure-pages` cannot enable a new Pages site with the default `GITHUB_TOKEN`.
+3. Under **Settings → Environments → github-pages → Deployment branches and tags**, restrict deployments to `main`. Use **Selected branches and tags**, not **Protected branches only**, unless `main` is protected. Verify repository Actions permissions permit official Pages actions.
+4. Mark the pull request ready and merge into `main`. This triggers deployment. Do not start a duplicate manual run.
+
+Administrative settings require repository-owner access and may not be readable through external review tooling. If a required setting cannot be verified, record that uncertainty rather than assuming success; a failed first deployment must be diagnosed and the setting corrected. Do not claim publication until the production deployment succeeds.
+
+### After merging
+
+1. Check the **GitHub Pages** workflow: both artifact upload and deployment must succeed on `main`.
+2. Open https://halsab.github.io/bread-site/ and validate the **actual production URL**. Check desktop, tablet and narrow mobile layouts; all eleven images; six locally hosted fonts; paths under `/bread-site/`; anchor navigation, keyboard focus, Telegram and MAX contacts; scroll-linked animations, reduced-motion behavior, and any browser console and network errors. Use the Codex built-in browser exclusively for agent-run browser testing. Explicitly report unavailable capabilities as unverified.
+3. Track and correct verified production defects, recipe/ingredient and allergen accuracy, and provisional photography when confirmed source materials become available.
+4. Keep the existing ChatGPT Sites deployment intact as a fallback until production is verified. If severe regressions are found, restore a known-working version through a new `main` deployment rather than assuming deleting the Pages workflow will restore the previous hosting.
+
+Pull requests perform build checks but **never deploy**. Merging into `main` publishes automatically. The Pages workflow does not require a PAT or repository secret when the repository Pages source and Actions permissions are configured correctly.
 
 ## Troubleshooting and rollback
 
