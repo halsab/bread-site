@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-const staticAssetBase = process.env.BREAD_DEPLOY_TARGET === "github-pages" ? "/bread-site" : "";
-
 type MediaFrameProps = {
   alt: string;
   className?: string;
@@ -35,7 +33,7 @@ export function MediaFrame({
               fill
               preload={preload}
               sizes={sizes}
-              src={`${staticAssetBase}${src}`}
+              src={src}
             />
           ) : null}
         </div>

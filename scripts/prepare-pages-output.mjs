@@ -10,7 +10,6 @@ import {
 } from "node:fs";
 import path from "node:path";
 
-const prefix = "/bread-site";
 const exportedRoot = path.resolve("dist/client");
 const pagesRoot = path.resolve("dist/pages");
 
@@ -21,12 +20,6 @@ if (!existsSync(exportedRoot)) {
 rmSync(pagesRoot, { recursive: true, force: true });
 mkdirSync(pagesRoot, { recursive: true });
 cpSync(exportedRoot, pagesRoot, { recursive: true });
-
-const prefixedRoot = path.join(pagesRoot, "bread-site");
-if (existsSync(prefixedRoot)) {
-  cpSync(prefixedRoot, pagesRoot, { recursive: true, force: true });
-  rmSync(prefixedRoot, { recursive: true, force: true });
-}
 
 const required = [
   "index.html",
@@ -75,10 +68,10 @@ function verifyReference(reference, source) {
   const url = reference.trim();
   if (!url.startsWith("/") || url.startsWith("//")) return;
   const pathname = new URL(url, "https://example.invalid").pathname;
-  if (!pathname.startsWith(prefix + "/")) {
-    throw new Error(`Incorrect root-relative URL in ${source}: ${url}`);
+  if (pathname.startsWith("/bread-site/")) {
+    throw new Error(`Legacy project-path URL in ${source}: ${url}`);
   }
-  const relative = decodeURIComponent(pathname.slice(prefix.length + 1));
+  const relative = decodeURIComponent(pathname.slice(1)) || "index.html";
   if (relative.includes("..") || !existsSync(path.join(pagesRoot, relative))) {
     throw new Error(`Unresolved GitHub Pages URL in ${source}: ${url}`);
   }
@@ -94,8 +87,8 @@ for (const file of filesIn(pagesRoot)) {
   let content = readFileSync(file, "utf8");
   if (ext === ".css") {
     const corrected = content.replaceAll(
-      prefix + "/_next/static/fonts/",
-      prefix + "/fonts/",
+      "/_next/static/fonts/",
+      "/fonts/",
     );
     if (corrected !== content) {
       writeFileSync(file, corrected);
