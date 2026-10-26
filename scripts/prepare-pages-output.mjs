@@ -10,16 +10,22 @@ import {
 import path from "node:path";
 
 const prefix = "/bread-site";
-const exportedRoot = path.resolve("dist/client/bread-site");
+const exportedRoot = path.resolve("dist/client");
 const pagesRoot = path.resolve("dist/pages");
 
-if (!existsSync(path.join(exportedRoot, "index.html"))) {
-  throw new Error("Vinext did not export bread-site/index.html; check static export and basePath.");
+if (!existsSync(exportedRoot)) {
+  throw new Error("Vinext did not produce dist/client.");
 }
 
 rmSync(pagesRoot, { recursive: true, force: true });
 mkdirSync(pagesRoot, { recursive: true });
 cpSync(exportedRoot, pagesRoot, { recursive: true });
+
+const prefixedRoot = path.join(pagesRoot, "bread-site");
+if (existsSync(prefixedRoot)) {
+  cpSync(prefixedRoot, pagesRoot, { recursive: true, force: true });
+  rmSync(prefixedRoot, { recursive: true, force: true });
+}
 
 const required = [
   "index.html",
