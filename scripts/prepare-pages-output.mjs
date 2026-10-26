@@ -49,6 +49,9 @@ const required = [
   "images/freshly-baked-loaf.webp",
 ];
 
+console.log("Exported top-level files:", readdirSync(exportedRoot).join(", "));
+console.log("Packaged top-level files:", readdirSync(pagesRoot).join(", "));
+
 for (const file of required) {
   if (!existsSync(path.join(pagesRoot, file))) {
     throw new Error(`Missing GitHub Pages asset: ${file}`);
