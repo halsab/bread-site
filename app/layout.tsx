@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./fonts.css";
 
+const staticAssetBase = process.env.BREAD_DEPLOY_TARGET === "github-pages" ? "/bread-site" : "";
+
 export const metadata: Metadata = {
   title: "MoolYort Bakery — тартин и домашний хлеб на закваске",
   description:
@@ -14,8 +16,8 @@ export const metadata: Metadata = {
       "Четыре вида домашнего хлеба: классический тартин, тартин с семенами льна, тыквенный хлеб и ржаной хлеб на закваске.",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: `${staticAssetBase}/favicon.svg`,
+    shortcut: `${staticAssetBase}/favicon.svg`,
   },
 };
 
@@ -29,14 +31,14 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="/fonts/cormorant-garamond-cyrillic-500.woff2"
+          href={`${staticAssetBase}/fonts/cormorant-garamond-cyrillic-500.woff2`}
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/cormorant-garamond-latin-500.woff2"
+          href={`${staticAssetBase}/fonts/cormorant-garamond-latin-500.woff2`}
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
