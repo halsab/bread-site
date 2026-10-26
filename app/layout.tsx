@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: "MoolYort Bakery — тартин и домашний хлеб на закваске",
   description:
     "MoolYort Bakery — домашний хлеб на закваске: классический тартин, тартин с семенами льна, тыквенный хлеб и ржаной хлеб. История пекаря и его хлеба.",
+  robots: {
+    index: false,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "ru_RU",
