@@ -1,6 +1,6 @@
 # GitHub Pages publishing
 
-The bakery site is published at https://halsab.github.io/bread-site/ using GitHub Actions. GitHub Pages serves static files and does not run the ChatGPT Sites Worker.
+The bakery site is prepared for publication at https://halsab.github.io/bread-site/ using GitHub Actions. GitHub Pages serves static files and does not run the ChatGPT Sites Worker.
 
 ## Build
 
