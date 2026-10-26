@@ -23,12 +23,15 @@ The existing `npm run build` remains the ChatGPT Sites/Cloudflare Worker build.
 
 ## First publication
 
-1. Review and merge the `github-pages` pull request into `main`.
-2. In repository **Settings → Pages**, choose **GitHub Actions** under **Build and deployment → Source**. This is different from enabling GitHub Actions in the repository.
-3. Under repository **Settings → Environments → github-pages**, limit deployment branches to `main` if environment protection is available.
-4. In **Actions**, open the **GitHub Pages** workflow. The merge into `main` should trigger the first deployment; if necessary, use **Run workflow** on `main`.
-5. Confirm the workflow succeeds and open https://halsab.github.io/bread-site/.
-6. Inspect desktop and mobile rendering, asset loading, animations, navigation, contact links, and the browser console before retiring ChatGPT Sites.
+Complete these prerequisites **before merging** the `github-pages` pull request into `main`:
+
+1. As a repository administrator, open **Settings → Pages → Build and deployment → Source** and select **GitHub Actions**. Enabling Actions alone is insufficient. Do not rely on `actions/configure-pages` to create or enable the Pages site using the default `GITHUB_TOKEN`.
+2. Open **Settings → Environments**. Create the `github-pages` environment manually if it does not exist; do not wait for the first deployment to create an unrestricted environment. Under its **Deployment branches and tags** rules, choose **Selected branches and tags** and allow only `main` (do not substitute **Protected branches only** unless `main` is actually protected).
+3. Build and validate the static artifact at `/bread-site/` in a browser, including desktop/mobile, images/fonts, navigation/contact links, scroll motion, reduced motion, and console/network errors. Keep the PR as draft and do not merge if mandatory verification remains unavailable.
+4. Once the prerequisites and review checks are satisfied, merge the `github-pages` pull request into `main`. The push to `main` triggers the workflow automatically; do not manually run a duplicate deployment. If a rerun is necessary, select the `main` branch in **Actions → GitHub Pages → Run workflow**.
+5. Confirm the deployment succeeds and open https://halsab.github.io/bread-site/. Recheck the production website before retiring ChatGPT Sites.
+
+Repository settings and deployment environment protection rules are administrative actions; this repository workflow does not configure them automatically.
 
 Pull requests run the build and checks but **never deploy**. Merging into `main` publishes automatically. No repository secrets or personal access token are required for the official Pages deployment actions.
 
