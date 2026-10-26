@@ -5,7 +5,7 @@ const isGitHubPagesBuild = process.env.BREAD_DEPLOY_TARGET === "github-pages";
 const nextConfig: NextConfig = isGitHubPagesBuild
   ? {
       output: "export",
-      basePath: "/bread-site",
+      assetPrefix: "/bread-site",
       trailingSlash: true,
       images: { unoptimized: true },
     }
