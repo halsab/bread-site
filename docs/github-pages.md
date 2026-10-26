@@ -15,7 +15,7 @@ npm run build:pages
 
 `build:pages` enables Vinext static export only for this build, strips the `/bread-site` filesystem prefix from the deployment artifact, and checks that the expected images, fonts, scripts, and styles are available. The final **upload directory is `dist/pages/`**, not `dist/client/`.
 
-Vinext generates files in `dist/client/bread-site/` because the URL base path is `/bread-site`. GitHub Pages already hosts the uploaded artifact under that URL prefix, so the packaging script copies the prefixed directory to `dist/pages/` to prevent a duplicated `/bread-site/bread-site/` path.
+The installed Vinext version exports `index.html` into `dist/client/` and may place compiled assets beneath `dist/client/bread-site/`. The packaging step overlays that asset directory into the deployment root, correcting font URLs emitted by Vinext, so Pages does not add the `/bread-site/` prefix twice. This one-page site uses `assetPrefix` (rather than `basePath`) to avoid a prerendering 404 in Vinext 1.0.0-beta.5. Adding routes requires revisiting the strategy.
 
 To preview locally, serve `dist/pages` as the document root mounted at `/bread-site/`. A file-server preview at `/` would not reproduce the production URL structure. Browser checks must use the Codex built-in browser when run by an implementation agent.
 

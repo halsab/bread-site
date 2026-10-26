@@ -6,6 +6,7 @@ import {
   readdirSync,
   rmSync,
   statSync,
+  writeFileSync,
 } from "node:fs";
 import path from "node:path";
 
@@ -49,9 +50,6 @@ const required = [
   "images/freshly-baked-loaf.webp",
 ];
 
-console.log("Exported top-level files:", readdirSync(exportedRoot).join(", "));
-console.log("Packaged top-level files:", readdirSync(pagesRoot).join(", "));
-
 for (const file of required) {
   if (!existsSync(path.join(pagesRoot, file))) {
     throw new Error(`Missing GitHub Pages asset: ${file}`);
@@ -93,7 +91,17 @@ for (const file of filesIn(pagesRoot)) {
   if (ext === ".css") styles++;
   if (ext !== ".html" && ext !== ".css") continue;
 
-  const content = readFileSync(file, "utf8");
+  let content = readFileSync(file, "utf8");
+  if (ext === ".css") {
+    const corrected = content.replaceAll(
+      prefix + "/_next/static/fonts/",
+      prefix + "/fonts/",
+    );
+    if (corrected !== content) {
+      writeFileSync(file, corrected);
+      content = corrected;
+    }
+  }
   if (content.includes("/_next/image?")) {
     throw new Error(`Runtime image optimization reference found in ${file}`);
   }

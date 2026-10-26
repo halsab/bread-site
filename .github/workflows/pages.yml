@@ -19,9 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: npm
@@ -31,6 +31,8 @@ jobs:
         run: npm run lint
       - name: Typecheck
         run: ./node_modules/.bin/tsc --noEmit
+      - name: Verify existing ChatGPT Sites build
+        run: npm run build
       - name: Build GitHub Pages artifact
         run: npm run build:pages
       - name: Configure Pages
