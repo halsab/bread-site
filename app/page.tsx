@@ -1,5 +1,7 @@
 import { MediaFrame } from "@/components/media-frame";
 
+export const dynamic = "force-static";
+
 const TELEGRAM_URL = "https://t.me/alisa_sabr";
 const MAX_URL =
   "https://max.ru/u/f9LHodD0cOIDSkO42jaZH-QksI9MMg-0iqhx4QJPqQkv3KChCeO60u-ov9M";
